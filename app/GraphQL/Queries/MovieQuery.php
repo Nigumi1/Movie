@@ -22,7 +22,7 @@ class MovieQuery extends Query
 
     public function type(): Type
     {
-        return GraphQL::type('movie_type');
+        return GraphQL::type('movie_union');
     }
 
     public function args(): array
@@ -34,6 +34,12 @@ class MovieQuery extends Query
             'action_type' => [
                 'type' => Type::string(),
             ],
+            'category' => [
+                'type' => Type::string(),
+            ],
+            'id' => [
+                'type' => Type::int(),
+            ],
         ];
     }
 
@@ -44,5 +50,11 @@ class MovieQuery extends Query
         {
             return $movieService->displayAllMovie($args['page']);
         }
+
+        if ($args['action_type'] == 'display_by_id') 
+        {
+            return $movieService->displayMovieById($args['id'], $args['category']);
+        }
+
     }
 }

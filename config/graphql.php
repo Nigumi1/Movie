@@ -115,6 +115,7 @@ return [
     'types' => [
         'movie_type' => App\GraphQL\Types\MovieType::class,
         'result_type' => App\GraphQL\Types\ResultType::class,
+        'movie_union' => App\GraphQL\Unions\MovieUnion::class,
     ],
 
     // This callable will be passed the Error object for each errors GraphQL catch.

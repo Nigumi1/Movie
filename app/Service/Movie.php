@@ -23,8 +23,20 @@ class Movie
         $response = Http::withToken($this->token)->get($url);
 
         $data = $response->json();
-        Log::info('TMDB API Response:', $data);
+        // Log::info('TMDB API Response:', $data);
         
+        return $data;
+    }
+
+    public function displayMovieById($id, $category) {
+        // category will be movie or tv
+        $url = "https://api.themoviedb.org/3/$category/{$id}";
+
+        /** @var Response $response */
+        $response = Http::withToken($this->token)->get($url);
+
+        $data = $response->json();
+
         return $data;
     }
 }
