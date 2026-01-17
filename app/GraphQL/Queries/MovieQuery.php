@@ -40,6 +40,9 @@ class MovieQuery extends Query
             'id' => [
                 'type' => Type::int(),
             ],
+            'keywords' => [
+                'type' => Type::string(),
+            ],
         ];
     }
 
@@ -54,6 +57,10 @@ class MovieQuery extends Query
         if ($args['action_type'] == 'display_by_id') 
         {
             return $movieService->displayMovieById($args['id'], $args['category']);
+        }
+
+        if ($args['action_type'] == 'search_movie') {
+            return $movieService->searchMovie($args['keywords']);
         }
 
     }

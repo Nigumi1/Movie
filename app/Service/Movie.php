@@ -24,13 +24,27 @@ class Movie
 
         $data = $response->json();
         // Log::info('TMDB API Response:', $data);
-        
+
         return $data;
     }
 
-    public function displayMovieById($id, $category) {
+    public function displayMovieById($id, $category)
+    {
         // category will be movie or tv
         $url = "https://api.themoviedb.org/3/$category/{$id}";
+
+        /** @var Response $response */
+        $response = Http::withToken($this->token)->get($url);
+
+        $data = $response->json();
+
+        return $data;
+    }
+
+    public function searchMovie($keywords)
+    {
+        $query = trim($keywords);
+        $url = "https://api.themoviedb.org/3/search/multi?query={$query}&include_adult=false&language=en-US&page=1";
 
         /** @var Response $response */
         $response = Http::withToken($this->token)->get($url);
