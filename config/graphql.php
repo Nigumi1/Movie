@@ -78,7 +78,7 @@ return [
                 'movie' => App\GraphQL\Queries\MovieQuery::class,
             ],
             'mutation' => [
-                // ExampleMutation::class,
+                'bookMark' => App\GraphQL\Mutations\BookMarkMutation::class,
             ],
             // The types only available in this schema
             'types' => [
@@ -116,6 +116,8 @@ return [
         'movie_type' => App\GraphQL\Types\MovieType::class,
         'result_type' => App\GraphQL\Types\ResultType::class,
         'movie_union' => App\GraphQL\Unions\MovieUnion::class,
+        'response_type' => App\GraphQL\Types\ResponseType::class,
+        'bookmark_input' => App\GraphQL\Inputs\BookMarkInput::class,
     ],
 
     // This callable will be passed the Error object for each errors GraphQL catch.
