@@ -20,6 +20,15 @@ class BookMarkInput extends InputType
             'movieId' => [
                 'type' => Type::int(),
             ],
+            'title' => [
+                'type' => Type::string(),
+            ],
+            'backdropPath' => [
+                'type' => Type::string(),
+            ],
+            'overview' => [
+                'type' => Type::string(),
+            ],
             'mediaType' => [
                 'type' => Type::string(),
             ],

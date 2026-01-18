@@ -10,14 +10,20 @@ class BookMark extends Model
 
     protected $fillable = [
         'movieId',
+        'fldTitle',
+        'fldBackdropPath',
+        'fldOverview',
         'fldMediaType',
     ];
 
-    public function addBookMark($movieId, $mediaType) {
+    public function addBookMark($movieId, $data) {
         $bookMark = new self ();
 
         $bookMark->movieId = $movieId;
-        $bookMark->fldMediaType = $mediaType;
+        $bookMark->fldTitle = $data['title'];
+        $bookMark->fldBackdropPath = $data['backdropPath'];
+        $bookMark->fldOverview = $data['overview'];
+        $bookMark->fldMediaType = $data['mediaType'];
 
         $bookMark->save();
 

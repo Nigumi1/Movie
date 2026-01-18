@@ -39,7 +39,7 @@ class BookMarkMutation extends Mutation
         $bookMark = $args['bookMark'];
 
         if ($bookMark['action_type'] == 'add_to_bookmark') {
-            return $bookMarkModel->addBookMark($bookMark['movieId'], $bookMark['mediaType']);
+            return $bookMarkModel->addBookMark($bookMark['movieId'], $bookMark);
         }
     }
 }

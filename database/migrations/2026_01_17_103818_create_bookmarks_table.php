@@ -14,6 +14,9 @@ return new class extends Migration
         Schema::create('tblBookMarks', function (Blueprint $table) {
             $table->id();
             $table->integer('movieId');
+            $table->string('fldTitle');
+            $table->string('fldBackdropPath');
+            $table->text('fldOverview');
             $table->string('fldMediaType');
             $table->timestamps();
         });
