@@ -16,6 +16,19 @@ class BookMark extends Model
         'fldMediaType',
     ];
 
+    public function displayBookMarks($page, $perPage) {
+        $offset = ($page - 1 ) * $perPage;
+        $totalRecords = self::count();
+        $totalPages = ceil($totalRecords/$perPage);
+        $records = self::offset($offset)->limit($perPage)->get();
+
+        foreach ($records as $data) {
+            $data->totalPages = $totalPages;
+        }
+
+        return $records;
+    }
+
     public function addBookMark($movieId, $data) {
         $bookMark = new self ();
 

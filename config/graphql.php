@@ -76,6 +76,7 @@ return [
         'default' => [
             'query' => [
                 'movie' => App\GraphQL\Queries\MovieQuery::class,
+                'bookMark' => App\GraphQL\Queries\BookMarkQuery::class,
             ],
             'mutation' => [
                 'bookMark' => App\GraphQL\Mutations\BookMarkMutation::class,
@@ -118,6 +119,7 @@ return [
         'movie_union' => App\GraphQL\Unions\MovieUnion::class,
         'response_type' => App\GraphQL\Types\ResponseType::class,
         'bookmark_input' => App\GraphQL\Inputs\BookMarkInput::class,
+        'bookmark_type' => App\GraphQL\Types\BookMarkType::class,
     ],
 
     // This callable will be passed the Error object for each errors GraphQL catch.
