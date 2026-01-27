@@ -3,6 +3,7 @@
 namespace App\Service;
 
 use Illuminate\Support\Facades\Http;
+use Carbon\Carbon;
 
 class PassportService
 {
@@ -20,12 +21,14 @@ class PassportService
 
             $tokens = $response->json();
 
+            $formatDate = Carbon::createFromTimestamp($tokens['expires_in'])->format('Y-m-d H:i:s');
+
             return [
                 'error' => false,
                 'message' => 'Login Successfully',
                 'accessToken' => $tokens['access_token'],
                 'refreshToken' => $tokens['refresh_token'],
-                'expiresIn' => $tokens['expires_in'],
+                'expiresIn' => $formatDate,
                 'tokenType' => $tokens['token_type']
             ];
         } catch (\Exception $e) {

@@ -30,7 +30,7 @@ class ResponseType extends GraphQLType
                 'type' => Type::string(),
             ],
             'expiresIn' => [
-                'type' => Type::int(),
+                'type' => Type::string(),
             ],
             'tokenType' => [
                 'type' => Type::string(),
