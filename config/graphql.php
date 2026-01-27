@@ -80,6 +80,7 @@ return [
             ],
             'mutation' => [
                 'bookMark' => App\GraphQL\Mutations\BookMarkMutation::class,
+                'auth' => App\GraphQL\Mutations\AuthMutation::class,
             ],
             // The types only available in this schema
             'types' => [
@@ -119,6 +120,7 @@ return [
         'movie_union' => App\GraphQL\Unions\MovieUnion::class,
         'response_type' => App\GraphQL\Types\ResponseType::class,
         'bookmark_input' => App\GraphQL\Inputs\BookMarkInput::class,
+        'auth_input' => App\GraphQL\Inputs\AuthInput::class,
         'bookmark_type' => App\GraphQL\Types\BookMarkType::class,
     ],
 

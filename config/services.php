@@ -40,4 +40,10 @@ return [
         'token' => env('TMDB_TOKEN'),
     ],
 
+    'passport' => [
+        'endpoint' => env('PASSPORT_ENDPOINT'),
+        'clientId' => env('CLIENT_ID'),
+        'clientSecret' => env('CLIENT_SECRET'),
+    ],
+
 ];
