@@ -122,6 +122,7 @@ return [
         'bookmark_input' => App\GraphQL\Inputs\BookMarkInput::class,
         'auth_input' => App\GraphQL\Inputs\AuthInput::class,
         'bookmark_type' => App\GraphQL\Types\BookMarkType::class,
+        'auth_response' => App\GraphQL\Types\AuthResponseType::class,
     ],
 
     // This callable will be passed the Error object for each errors GraphQL catch.

@@ -21,15 +21,15 @@ class PassportService
 
             $tokens = $response->json();
 
-            $formatDate = Carbon::createFromTimestamp($tokens['expires_in'])->format('Y-m-d H:i:s');
-
             return [
                 'error' => false,
                 'message' => 'Login Successfully',
-                'accessToken' => $tokens['access_token'],
-                'refreshToken' => $tokens['refresh_token'],
-                'expiresIn' => $formatDate,
-                'tokenType' => $tokens['token_type']
+                'data' => [
+                    'accessToken' => $tokens['access_token'],
+                    'refreshToken' => $tokens['refresh_token'],
+                    'expiresIn' => $tokens['expires_in'],
+                    'tokenType' => $tokens['token_type']
+                ]
             ];
         } catch (\Exception $e) {
             return [

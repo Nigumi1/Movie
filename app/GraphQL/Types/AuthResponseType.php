@@ -6,26 +6,28 @@ namespace App\GraphQL\Types;
 
 use Rebing\GraphQL\Support\Type as GraphQLType;
 use GraphQL\Type\Definition\Type;
-use Rebing\GraphQL\Support\Facades\GraphQL;
 
-class ResponseType extends GraphQLType
+class AuthResponseType extends GraphQLType
 {
     protected $attributes = [
-        'name' => 'response_type',
+        'name' => 'auth_response',
         'description' => 'A type'
     ];
 
     public function fields(): array
     {
         return [
-            'error' => [
-                'type' => Type::boolean(),
-            ],
-            'message' => [
+            'accessToken' => [
                 'type' => Type::string(),
             ],
-            'data' => [
-                'type' => GraphQL::type('auth_response'),
+            'refreshToken' => [
+                'type' => Type::string(),
+            ],
+            'expiresIn' => [
+                'type' => Type::int(),
+            ],
+            'tokenType' => [
+                'type' => Type::string(),
             ],
         ];
     }
