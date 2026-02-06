@@ -38,4 +38,35 @@ class PassportService
             ];
         }
     }
+
+    public function refreshToken($refreshToken)
+    {
+        try {
+            $response = Http::asForm()->post(config('services.passport.endpoint'), [
+                'grant_type' => 'refresh_token',
+                'client_id' => config('services.passport.clientId'),
+                'client_secret' => config('services.passport.clientSecret'),
+                'refresh_token' => $refreshToken,
+                'scope' => '',
+            ]);
+
+            $tokens = $response->json();
+
+            return [
+                'error' => false,
+                'message' => 'Token refreshed successfully',
+                'data' => [
+                    'accessToken' => $tokens['access_token'],
+                    'refreshToken' => $tokens['refresh_token'],
+                    'expiresIn' => $tokens['expires_in'],
+                    'tokenType' => $tokens['token_type']
+                ]
+            ];
+        } catch (\Exception $e) {
+            return [
+                'error' => true,
+                'message' => 'something wrong with services ' . $e->getMessage(),
+            ];
+        }
+    }
 }

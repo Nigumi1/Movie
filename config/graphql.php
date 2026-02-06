@@ -75,11 +75,9 @@ return [
     'schemas' => [
         'default' => [
             'query' => [
-                'movie' => App\GraphQL\Queries\MovieQuery::class,
-                'bookMark' => App\GraphQL\Queries\BookMarkQuery::class,
+                
             ],
             'mutation' => [
-                'bookMark' => App\GraphQL\Mutations\BookMarkMutation::class,
                 'auth' => App\GraphQL\Mutations\AuthMutation::class,
             ],
             // The types only available in this schema
@@ -101,6 +99,27 @@ return [
             // 'route_attributes' => [
             //     'domain' => 'api.example.com',
             // ]
+            'route_attributes' => [],
+        ],
+        'movie' => [
+            'query' => [
+                'movie' => App\GraphQL\Queries\MovieQuery::class,
+                'bookMark' => App\GraphQL\Queries\BookMarkQuery::class,
+            ],
+            'mutation' => [
+                'bookMark' => App\GraphQL\Mutations\BookMarkMutation::class,
+            ],
+
+            // The types only available in this schema
+            'types' => [
+                // ExampleType::class,
+            ],
+
+            'middleware' => ['auth:users_api'],
+
+            // Which HTTP methods to support; must be given in UPPERCASE!
+            'method' => ['GET', 'POST'],
+
             'route_attributes' => [],
         ],
     ],

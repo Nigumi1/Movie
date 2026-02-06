@@ -2,7 +2,11 @@ import axios from 'axios';
 
 
 const api = axios.create({
-  baseURL: '/api',
+  baseURL: process.env.API_ENDPOINT,
+});
+
+const accessApi = axios.create({
+  baseURL: process.env.API_ENDPOINT + '/movie',
 });
 
 

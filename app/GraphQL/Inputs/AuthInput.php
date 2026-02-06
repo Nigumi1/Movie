@@ -26,6 +26,9 @@ class AuthInput extends InputType
             'password' => [
                 'type' => Type::string(),
             ],
+            'refreshToken' => [
+                'type' => Type::string(),
+            ],
             'action_type' => [
                 'type' => Type::string(),
             ]

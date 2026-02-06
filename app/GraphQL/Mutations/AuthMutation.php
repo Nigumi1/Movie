@@ -12,6 +12,7 @@ use Rebing\GraphQL\Support\Mutation;
 use Rebing\GraphQL\Support\SelectFields;
 use Rebing\GraphQL\Support\Facades\GraphQL;
 use App\Models\Users;
+use App\Service\PassportService;
 
 class AuthMutation extends Mutation
 {
@@ -72,6 +73,7 @@ class AuthMutation extends Mutation
         $auth = $args['auth'];
         $users = new Users();
         $authUsers = new AuthUsers();
+        $passportService = new PassportService();
 
         if ($auth['action_type'] == 'register') {
             return $users->registerUsers($auth);
@@ -79,6 +81,10 @@ class AuthMutation extends Mutation
 
         if ($auth['action_type'] == 'login') {
             return $authUsers->authUsers($auth);
+        }
+
+        if ($auth['action_type'] == 'refresh_token') {
+            return $passportService->refreshToken($auth['refreshToken']);
         }
     }
 }
